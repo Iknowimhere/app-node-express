@@ -1,0 +1,11 @@
+<nav>
+    <div class="logo">LOGO</div> 
+    <ul>
+        <% if(locals.user){%>
+            <li><a href="/api/v1/todo/">Home</a></li>
+            <li><a href="/api/v1/user/logout">Logout</a></li>
+        <%}else{%>
+        <li>Login/Register to access todos</li>
+        <%}%>
+    </ul>
+</nav>

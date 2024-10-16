@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+    height: 100vh;
+    position: relative;
+}
+nav{
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddd;
+}
+nav .logo{
+    margin-left: 1em;
+}
+nav ul{
+    width: 50%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+ul li a{
+    text-decoration: none;
+    color:black;
+}
+ul li a:active{
+    color: aquamarine;
+}
+.form-container{
+    margin: 0 auto;
+    width: 350px;
+    margin-top: 1em;
+}
+.form-container h1{
+    margin-bottom: 1em;
+    text-align: center;
+}
+.form-container form{
+    width: 100%;
+    display: flex;
+    gap: 0.25em;
+}
+form input{
+    flex: 1;
+    padding: 1em;
+}
+form button{
+    padding: 1em;
+}
+.table-container{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 2em;
+}
+.table-container h2{
+    margin-bottom: 1em;
+}
+.table-container table{
+    width: 100%;
+}
+table tr th{
+    height: 70px;
+    background-color: #ddd;
+}
+table tr td{
+    border-bottom:1px solid #ddd;
+    height: 50px;
+}
+footer{
+position: fixed;
+bottom: 0;
+width: 100%;
+background-color: #ddd;
+padding: 1em;
+text-align: center;
+}
+.strike{
+    text-decoration: line-through;
+}
+.links{
+    margin: 0 auto;
+    max-width: 400px;
+    margin-top: 10vh;
+    border-radius: 2em;
+    border: 1px solid black;
+    padding: 1em;
+    text-align: center;
+    line-height: 3em;
+}
+.links h1{
+    margin-bottom: 1em;
+}
+.links a{
+    padding: 1em 2em;
+    background-color: blue;
+    text-decoration: none;
+    border-radius: 1em;
+    color: white;
+}
+.links a:first-of-type{
+    background-color: green;
+}
+.links a:last-of-type{
+    background-color: blue;
+}
+.form{
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 1em;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.form h1{
+    text-align: center;
+    margin-bottom: 1em;
+}
+.form form{
+    display: flex;
+    flex-direction: column;
+}
+.form form label{
+    font-size: larger;
+    margin-top: 1em;
+    font-weight: 500;
+}
+.form form button{
+    border: none;
+    color: white;
+    background-color: blue;
+    font-size: large;
+    margin-top: 1em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+.form form input{
+    border-radius: 1em;
+    outline: none;
+    border: 1px solid #ddd;
+}
+.form form div{
+    margin-top: 1em;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo|Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include("./partials/header",{user:locals.user})%>                                                               
+        <div class="form-container">
+            <h1>Create task</h1>
+            <form action="/api/v1/todo" method="post">
+                <input type="text" name="todo" id="" placeholder="enter a todo">
+                <button>Add</button>
+            </form>
+        </div>
+        <div class="table-container">
+            <h2>List of todos</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Todo</th>
+                            <th>Update Todo</th>
+                            <th>Update Status</th>
+                            <th>Delete todo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%locals.todos.forEach((doc)=>{%>
+                            <tr>
+                                <% if(doc.isCompleted){%>
+                                    <td class="strike">
+                                        <%= doc.todo%>
+                                    </td>
+                                <%}else{%>
+                                    <td>
+                                        <%=doc.todo%>
+                                    </td> %>
+                                    <%}%>
+                                        <td><a href="/api/v1/todo/<%=doc._id%>">update todo</a></td>
+                                        <td>
+                                            <form action="/api/v1/todo/status/<%= doc._id%>?_method=PATCH"
+                                                method="post">
+                                                <input type="hidden" name="isCompleted" value="true">
+                                                <button type="submit">Submit</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/api/v1/todo/<%= doc._id%>?_method=DELETE" method="post">
+                                                <button type="submit">Delete</button>
+                                            </form>
+                                        </td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+                </table>
+        </div>
+        <%- include("./partials/footer")%>
+</body>
+
+</html>

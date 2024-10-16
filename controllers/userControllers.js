@@ -26,7 +26,8 @@ export const login=async (req,res,next)=>{
     try {
         const existingUser=await User.findOne({email})
         if(!existingUser || !(await existingUser.verifyPassword(password,existingUser.password))){
-            return res.status(400).render("login",{message:"User doens't exist or password is incorrect"})
+            req.flash("message","User doesn't exist or password is incorrect")
+            return res.status(400).redirect("/api/v1/user/login")
         }
         let token=await genToken(existingUser._id);
         res.cookie("token",`Bearer ${token}`,{
@@ -35,7 +36,8 @@ export const login=async (req,res,next)=>{
         })
         res.status(201).redirect("/api/v1/todo")
     } catch (error) {
-        res.status(500).render("login",{error:error.message})
+        req.flash("error",error.message)
+        res.status(500).redirect("/api/v1/user/login")
     }
 } 
 
@@ -44,7 +46,9 @@ export const getRegisterForm=(req,res,next)=>{
 }
 
 export const getLoginForm=(req,res,next)=>{
-    res.render("login.ejs")
+    let message=req.flash("message")
+    let error=req.flash("error")
+    res.render("login.ejs",{message,error})
 }
 
 export const logout=(req,res,next)=>{
